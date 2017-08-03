@@ -44,6 +44,12 @@ export class HeroService {
       .then(res => res.json().data as Hero)
       .catch(this.handleError);
   }
+  getJSON(): Promise<JSON> {
+    return this.http.get('http://ip.jsontest.com/')
+    .toPromise()
+    .then(response => response.json() )
+    .catch(this.handleError);
+  }
 
   update(hero: Hero): Promise<Hero> {
     const url = `${this.heroesUrl}/${hero.id}`;
